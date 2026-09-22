@@ -1,139 +1,186 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MeuCrachaApp());
+  runApp(const CrachaApp());
 }
 
-class MeuCrachaApp extends StatelessWidget {
-  const MeuCrachaApp({super.key});
+class CrachaApp extends StatelessWidget {
+  const CrachaApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Identificação Estudantil',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.indigo,
+      home: Scaffold(
+        backgroundColor: Colors.blueGrey[900],
+        appBar: AppBar(
+          title: const Text('Crachá Digital'),
+          centerTitle: true,
+          backgroundColor: Colors.blueGrey[800],
         ),
-        useMaterial3: true,
+        body: const Center(
+          child: CartaoCracha(),
+        ),
       ),
-      home: const TelaCracha(),
     );
   }
 }
 
-class TelaCracha extends StatelessWidget {
-  const TelaCracha({super.key});
+class CartaoCracha extends StatelessWidget {
+  const CartaoCracha({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'PPDM - Identificação Estudantil',
+    return Container(
+      width: 350,
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        // Exercício 4: fundo gradiente
+        gradient: const LinearGradient(
+          colors: [
+            Colors.white,
+            Colors.blueGrey,
+          ],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
         ),
-        centerTitle: true,
-        backgroundColor: Colors.indigo,
-        foregroundColor: Colors.white,
+        borderRadius: BorderRadius.circular(15),
+        boxShadow: const [
+          BoxShadow(
+            color: Colors.black26,
+            blurRadius: 10,
+            offset: Offset(0, 5),
+          ),
+        ],
       ),
-
-      body: Center(
-        child: Container(
-          width: 320,
-          padding: const EdgeInsets.all(20),
-
-          decoration: BoxDecoration(
-            color: Colors.indigo.shade50,
-            borderRadius: BorderRadius.circular(16),
-            border: Border.all(
-              color: Colors.indigo,
-              width: 2,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          // Exercício 1: imagem usando NetworkImage
+          const CircleAvatar(
+            radius: 50,
+            backgroundImage: NetworkImage(
+              'https://i.pravatar.cc/150',
             ),
-            boxShadow: const [
-              BoxShadow(
-                color: Colors.black12,
-                blurRadius: 10,
-                offset: Offset(0, 4),
-              ),
-            ],
           ),
 
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
+          const SizedBox(height: 15),
+
+          const Text(
+            'Giulia Melise Bittencourt de Sousa Silva',
+            style: TextStyle(
+              fontSize: 22,
+              fontWeight: FontWeight.bold,
+              color: Colors.black87,
+            ),
+          ),
+
+          const Text(
+            'Desenvolvedor Flutter',
+            style: TextStyle(
+              fontSize: 14,
+              color: Colors.grey,
+              letterSpacing: 1.2,
+            ),
+          ),
+
+          const Divider(
+            height: 30,
+            thickness: 1,
+          ),
+
+          // Informações
+          const Row(
             children: [
-
-              const CircleAvatar(
-                radius: 40,
-                backgroundColor: Colors.indigo,
-                child: Icon(
-                  Icons.person,
-                  size: 50,
-                  color: Colors.white,
-                ),
+              Icon(
+                Icons.email,
+                color: Colors.blueAccent,
               ),
+              SizedBox(width: 10),
+              Text('isaac@email.com'),
+            ],
+          ),
 
-              const SizedBox(height: 12),
+          const SizedBox(height: 10),
 
-              const Text(
-                'Ana Silva Santos',
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.indigo,
-                ),
+          const Row(
+            children: [
+              Icon(
+                Icons.phone,
+                color: Colors.blueAccent,
               ),
+              SizedBox(width: 10),
+              Text('+55 (11) 99999-9999'),
+            ],
+          ),
 
-              const Text(
-                'Desenvolvimento Mobile / PPDM',
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.grey,
-                  fontWeight: FontWeight.w500,
-                ),
+          const SizedBox(height: 20),
+
+          // Exercício 2: Sobre Mim
+          const Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              'Sobre Mim',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.black87,
               ),
+            ),
+          ),
 
-              const Divider(
-                height: 24,
-                thickness: 1,
+          const SizedBox(height: 5),
+
+          const Text(
+            'Sou estudante de programação e estou aprendendo '
+            'a desenvolver aplicativos usando Flutter.',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 14,
+              color: Colors.black87,
+            ),
+          ),
+
+          const SizedBox(height: 15),
+
+          // Exercício 3: habilidades usando Chip
+          const Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              'Habilidades',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.black87,
               ),
+            ),
+          ),
 
-              Row(
-                children: const [
-                  Icon(
-                    Icons.badge,
-                    color: Colors.indigo,
-                  ),
-                  SizedBox(width: 10),
-                  Text(
-                    'RA: 2026109923',
-                    style: TextStyle(
-                      fontSize: 16,
-                    ),
-                  ),
-                ],
+          const SizedBox(height: 8),
+
+          const Wrap(
+            spacing: 6,
+            runSpacing: 5,
+            children: [
+              Chip(
+                label: Text('Flutter'),
+                avatar: Icon(Icons.phone_android, size: 18),
               ),
-
-              const SizedBox(height: 8),
-
-              Row(
-                children: const [
-                  Icon(
-                    Icons.email,
-                    color: Colors.indigo,
-                  ),
-                  SizedBox(width: 10),
-                  Text(
-                    'ana.silva@estudante.edu.br',
-                    style: TextStyle(
-                      fontSize: 14,
-                    ),
-                  ),
-                ],
+              Chip(
+                label: Text('Dart'),
+                avatar: Icon(Icons.code, size: 18),
+              ),
+              Chip(
+                label: Text('HTML'),
+                avatar: Icon(Icons.web, size: 18),
+              ),
+              Chip(
+                label: Text('CSS'),
+                avatar: Icon(Icons.palette, size: 18),
               ),
             ],
           ),
-        ),
+        ],
       ),
     );
   }
