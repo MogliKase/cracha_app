@@ -24,7 +24,7 @@ class DesafioLista extends StatelessWidget {
               curso: 'Desenvolvimento Mobile / PPDM',
               ra: '2026109923',
               email: 'ana.silva@estudante.edu.br',
-              imagem: 'https://i.pravatar.cc/150?img=12',
+              imagem: 'https://i.pravatar.cc/150?img=10',
             ),
 
             const SizedBox(height: 20),
