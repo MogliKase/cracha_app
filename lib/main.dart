@@ -97,7 +97,7 @@ class CartaoCracha extends StatelessWidget {
                 color: Colors.blueAccent,
               ),
               SizedBox(width: 10),
-              Text('isaac@email.com'),
+              Text('giulia@email.com'),
             ],
           ),
 
